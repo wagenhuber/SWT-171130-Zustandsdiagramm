@@ -47,7 +47,7 @@ public class Fenster extends JFrame {
         jbtnA.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//
+//d
 
 
             }
