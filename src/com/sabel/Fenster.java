@@ -7,9 +7,8 @@ import java.awt.event.ActionListener;
 
 public class Fenster extends JFrame {
 
-    private enum Farbe {ROT, BLAU, GRUEN, GELB}
+    private Model model;
 
-    private Farbe farbe;
 
     private JPanel jpContainer;
     private JButton jbtnA, jbtnB, jbtnC;
@@ -23,11 +22,15 @@ public class Fenster extends JFrame {
         this.initComponents();
         this.initEvents();
         this.setSize(300, 300);
-        this.setVisible(true);
-        this.start();
+        //FEnster soll erst sichtbar sein, wenn model fertig instanziert
+        //this.setVisible(true);
+
 
     }
 
+    public void setModel(Model model) {
+        this.model = model;
+    }
 
     public void initComponents() {
         jpContainer = new JPanel();
@@ -47,8 +50,8 @@ public class Fenster extends JFrame {
         jbtnA.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//d
 
+                model.pfeilA();
 
             }
         });
@@ -57,6 +60,9 @@ public class Fenster extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
+                model.pfeilB();
+
             }
         });
 
@@ -64,18 +70,18 @@ public class Fenster extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
+                model.pfeilC();
+
             }
         });
 
     }//ende Init Events
 
 
-    public void start() {
-        farbe = Farbe.ROT;
-        setColor();
-    }
 
-    private void setColor() {
+
+    public void setColor(Farbe farbe) {
         switch (farbe) {
             case ROT:
                 jpContainer.setBackground(Color.RED);
